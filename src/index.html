@@ -1,324 +1,714 @@
-<!--
-  Hello!
-  -
-  Simplefolio is a clean and responsive portfolio template for Developers!
-  Created by Jacobo Martinez.
-  -
-  Github Repo: https://github.com/cobiwave/simplefolio/
-  Readme: https://github.com/cobiwave/simplefolio/README.md
-  -
-  For business & inquires, contact me -> jacobojavier98@gmail.com
--->
-<!DOCTYPE html>
-<html lang="en" class="sr">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" type="image/png" href="assets/favicon.png" />
+/* About Section */<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Johnson - Aspiring Software Engineer</title>
+   <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-    <!-- Todo: put here your site title -->
-    <title>DEVAPRAKASH</title>
-    <!-- Todo: add some coding keywords below - e.g: (javascript, yourusername, etc) -->
-    <meta name="keywords" content="[madhesh19], [Madhesh], HTML CSS Javascript React JS" />
-    <!-- Todo: improve your SEO by adding a small description of you -->
-    <meta name="description" content="[Madhesh] | FrontEnd Developer" />
+    :root {
+        --primary: #b91c1c;       /* Deep red */
+        --primary-dark: #7f1d1d;  /* Darker red */
+        --secondary: #e5e7eb;     /* Light grey */
+        --accent: #374151;        /* Dark grey */
+        --text: #4b5563;          /* Medium grey */
+        --text-light: #6b7280;    /* Lighter grey */
+        --white: #f3f4f6;         /* Very light grey */
+        --gradient: linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%);
+    }
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link rel="stylesheet" href="styles.scss" />
-    <script
-      defer
-      src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"
-    ></script>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--text);
+        scroll-behavior: smooth;
+        background-color: var(--white);
+    }
 
-    <!-- Todo: remove the below script once you finish your portfolio -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-  </head>
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
 
-  <!-- Todo: read the following HTML Todos to create your stunning portfolio website -->
-  <body>
-    <div id="top"></div>
+    /* Header */
+    header {
+        background: rgba(229, 231, 235, 0.95);
+        backdrop-filter: blur(10px);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    }
 
-    <!-- **** Hero Section **** -->
-    <section id="hero" class="jumbotron">
-      <div class="container">
-        <h1 class="hero-title load-hidden">
-          Hi, my name is <span class="text-color-main">DEVAPRAKASH</span>
-          <br />
-          I'm the FrontEnd Developer you need.
-        </h1>
-        <p class="hero-cta load-hidden">
-          <a rel="noreferrer" class="cta-btn cta-btn--hero" href="#about"
-            >Hire me</a
-          >
-        </p>
-      </div>
-    </section>
-    <!-- /END Hero Section -->
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+    }
 
-    <!-- **** About Section **** -->
-    <section id="about">
-      <div class="container">
-        <h2 class="section-title load-hidden">About me</h2>
-        <div class="row about-wrapper">
-          <div class="col-md-6 col-sm-12">
-            <div class="about-wrapper__image load-hidden">
-              <img
-                alt="Profile Image"
-                class="img-fluid rounded shadow-lg"
-                height="auto"
-                width="300px"
-                src="assets/profile.jpg"
-                alt="Profile Image"
-              />
+    .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--primary);
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: var(--text);
+        font-weight: 500;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .nav-links a:hover {
+        color: var(--primary);
+    }
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background: var(--primary);
+        transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+        background: var(--gradient);
+        color: white;
+        padding: 150px 0 100px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.08)" points="0,1000 1000,0 1000,1000"/></svg>');
+        background-size: cover;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .hero h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        opacity: 0;
+        animation: fadeInUp 1s ease forwards;
+    }
+
+    .hero-subtitle {
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+        opacity: 0;
+        animation: fadeInUp 1s ease 0.3s forwards;
+    }
+
+    .cta-button {
+        display: inline-block;
+        background: rgba(229, 231, 235, 0.15);
+        color: white;
+        padding: 15px 40px;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: 2px solid rgba(229, 231, 235, 0.3);
+        opacity: 0;
+        animation: fadeInUp 1s ease 0.6s forwards;
+    }
+
+    .cta-button:hover {
+        background: var(--white);
+        color: var(--primary);
+        transform: translateY(-2px);
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Section Styles */
+    section {
+        padding: 80px 0;
+    }
+
+    .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        color: var(--accent);
+        position: relative;
+    }
+
+    .section-title::after {
+        content: '';
+        position: absolute;
+        width: 60px;
+        height: 3px;
+        background: var(--primary);
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* Profile Image Styles */
+    .profile-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2rem;
+    }
+
+    .profile-image {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 5px solid var(--primary);
+        background: var(--secondary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 4rem;
+        color: var(--text-light);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+    }
+
+    .profile-image:hover {
+        transform: scale(1.05);
+        box-shadow: 0 15px 40px rgba(185, 28, 28, 0.2);
+    }
+
+    .profile-image img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .about {
+        background: var(--secondary);
+    }
+
+    .about-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+    }
+
+    .about-text {
+        font-size: 1.1rem;
+        line-height: 1.8;
+    }
+
+    .skills {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .skill-tag {
+        background: var(--primary);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 25px;
+        text-align: center;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: transform 0.3s ease;
+    }
+
+    .skill-tag:hover {
+        transform: translateY(-2px);
+    }
+
+    /* Projects Section */
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+    }
+
+    .project-card {
+        background: var(--white);
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    .project-image {
+        height: 200px;
+        background: var(--gradient);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 3rem;
+    }
+
+    .project-content {
+        padding: 2rem;
+    }
+
+    .project-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--accent);
+    }
+
+    .project-description {
+        color: var(--text-light);
+        margin-bottom: 1.5rem;
+    }
+
+    .project-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .tech-tag {
+        background: var(--secondary);
+        color: var(--primary);
+        padding: 4px 12px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+
+    .project-links {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .project-link {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+    .project-link:hover {
+        color: var(--primary-dark);
+    }
+
+    /* Education Section */
+    .education {
+        background: var(--secondary);
+    }
+
+    .education-item {
+        background: var(--white);
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        margin-bottom: 2rem;
+    }
+
+    .education-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .degree {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--accent);
+    }
+
+    .school {
+        color: var(--primary);
+        font-weight: 500;
+    }
+
+    .year {
+        color: var(--text-light);
+        font-weight: 500;
+    }
+
+    /* Contact Section */
+    .contact {
+        text-align: center;
+        background: var(--accent);
+        color: white;
+    }
+
+    .contact-content {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .contact-info {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+
+    .contact-item {
+        padding: 1.5rem;
+        background: rgba(229, 231, 235, 0.1);
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .contact-item:hover {
+        background: rgba(255,255,255,0.15);
+        transform: translateY(-5px);
+    }
+
+    .contact-item h4 {
+        margin-bottom: 0.5rem;
+    }
+
+    .contact-item a {
+        color: white;
+        text-decoration: none;
+    }
+
+    .contact-item a:hover {
+        text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+        background: var(--accent);
+        color: var(--white);
+        text-align: center;
+        padding: 2rem 0;
+        border-top: 1px solid rgba(229, 231, 235, 0.1);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .nav-links {
+            display: none;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+        }
+
+        .about-content {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .projects-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .education-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .contact-info {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* Scroll animations */
+    .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.6s ease;
+    }
+
+    .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Alex Johnson</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Alex Johnson</h1>
+                <p class="hero-subtitle">Aspiring Software Engineer & Computer Science Student</p>
+                <a href="#projects" class="cta-button">View My Work</a>
             </div>
-          </div>
-          <div class="col-md-6 col-sm-12">
-            <div class="about-wrapper__info load-hidden">
-              <p class="about-wrapper__info-text">
-                I am passionate about staying up-to-date with the latest industry trends and technologies, and I am eager to contribute myexpertise in HTML, CSS, JavaScript, and responsive design to create exceptional user experiences. I have knowledge of popular framework such as React js . My objective is to continuously grow as a Front End Developer and make a meaningfulimpact in the digital realm.
-              </p>
-              <p class="about-wrapper__info-text">
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title fade-in">About Me</h2>
+            
+            <!-- Profile Image Section -->
+            <div class="profile-section fade-in">
+                <div class="profile-image">
+                    <!-- You can replace this with your actual image -->
+                    <!-- <img src="your-profile-image.jpg" alt="Alex Johnson Profile"> -->
+                    👤
+                </div>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <p>Hello! I'm Alex, a passionate Computer Science student with a love for creating innovative solutions through code. Currently pursuing my Bachelor's degree, I'm constantly exploring new technologies and building projects that challenge me to grow as a developer.</p>
+                    
+                    <p>My journey in programming started with curiosity about how websites work, and has evolved into a deep appreciation for clean code, user experience, and problem-solving. I enjoy working on both front-end and back-end development, always eager to learn new frameworks and technologies.</p>
+                    
+                    <p>When I'm not coding, you can find me contributing to open source projects, participating in hackathons, or exploring the latest trends in AI and machine learning.</p>
+                </div>
+                <div class="fade-in">
+                    <h3>Technical Skills</h3>
+                    <div class="skills">
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">Express.js</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title fade-in">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <div class="project-image">🌦️</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Weather Dashboard</h3>
+                        <p class="project-description">A responsive web application that provides real-time weather information with interactive maps and 7-day forecasts. Features location-based weather detection and beautiful data visualizations.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">API Integration</span>
+                            <span class="tech-tag">Chart.js</span>
+                            <span class="tech-tag">CSS3</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">🔗 Live Demo</a>
+                            <a href="#" class="project-link">📁 GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-image">📝</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Task Management System</h3>
+                        <p class="project-description">Full-stack web application for team project management with user authentication, real-time updates, and collaborative features. Includes drag-and-drop functionality and deadline tracking.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">MERN Stack</span>
+                            <span class="tech-tag">Socket.io</span>
+                            <span class="tech-tag">JWT Auth</span>
+                            <span class="tech-tag">MongoDB</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">🔗 Live Demo</a>
+                            <a href="#" class="project-link">📁 GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-image">🤖</div>
+                    <div class="project-content">
+                        <h3 class="project-title">AI Chatbot</h3>
+                        <p class="project-description">Intelligent chatbot built with natural language processing capabilities. Features context-aware conversations, sentiment analysis, and integration with external APIs for dynamic responses.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">NLTK</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">Machine Learning</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">🔗 Live Demo</a>
+                            <a href="#" class="project-link">📁 GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="education">
+        <div class="container">
+            <h2 class="section-title fade-in">Education</h2>
+            <div class="education-item fade-in">
+                <div class="education-header">
+                    <div>
+                        <div class="degree">Bachelor of Science in Computer Science</div>
+                        <div class="school">University of Technology</div>
+                    </div>
+                    <div class="year">2022 - 2026</div>
+                </div>
+                <p>Relevant Coursework: Data Structures & Algorithms, Object-Oriented Programming, Database Systems, Software Engineering, Web Development, Computer Networks</p>
+                <p><strong>GPA:</strong> 3.8/4.0 | <strong>Dean's List:</strong> Fall 2023, Spring 2024</p>
+            </div>
+
+            <div class="education-item fade-in">
+                <div class="education-header">
+                    <div>
+                        <div class="degree">Certifications</div>
+                    </div>
+                </div>
+                <ul>
+                    <li>AWS Certified Cloud Practitioner (2024)</li>
+                    <li>freeCodeCamp Full Stack Development (2023)</li>
+                    <li>Google IT Support Professional Certificate (2023)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <h2 class="section-title fade-in">Get In Touch</h2>
+                <p class="fade-in">I'm always interested in new opportunities and collaborations. Whether you want to discuss a project, share ideas, or just say hello, feel free to reach out!</p>
                 
-              </p>
-              <span class="d-flex mt-3">
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  class="cta-btn cta-btn--resume"
-                  href="assets/resume.pdf"
-                >
-                  View Resume
-                </a>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- /END About Section -->
-
-    <!-- **** Projects Section **** -->
-    <section id="projects">
-      <div class="container">
-        <div class="project-wrapper">
-          <h2 class="section-title dark-blue-text">Projects</h2>
-
-          <!-- Notice: each .row is a project -->
-          <div class="row">
-            <div class="col-lg-4 col-sm-12">
-              <div class="project-wrapper__text load-hidden">
-                <h3 class="project-wrapper__text-title">Netflix-clone</h3>
-                <div>
-                  <p class="mb-4">
-                    • Designed and developed a clean and modern website using React js.<br>
-                    • Optimized website for speed and user experience.<br>
-                    • Used Styled Components library for responsive design to ensure compatibility across all devices.<br>
-                    • Used Firebase Auth to allow users to signin and signup into the application using their Email id.<br>
-                    • Used TMDB API to get access to movies and series.<br>
-                    • Used Axios library to make HTTP requests from the api.<br>
-                  </p>
+                <div class="contact-info">
+                    <div class="contact-item fade-in">
+                        <h4>📧 Email</h4>
+                        <a href="mailto:alex.johnson@email.com">alex.johnson@email.com</a>
+                    </div>
+                    <div class="contact-item fade-in">
+                        <h4>💼 LinkedIn</h4>
+                        <a href="https://linkedin.com/in/alexjohnson" target="_blank">linkedin.com/in/alexjohnson</a>
+                    </div>
+                    <div class="contact-item fade-in">
+                        <h4>🐱 GitHub</h4>
+                        <a href="https://github.com/alexjohnson" target="_blank">github.com/alexjohnson</a>
+                    </div>
                 </div>
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  class="cta-btn cta-btn--hero"
-                  href="https://netflix-clone-138c5.web.app/"
-                >
-                  See Live
-                </a>
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  class="cta-btn text-color-main"
-                  href="https://github.com/madhesh19/Netflix-clone"
-                >
-                  Source Code
-                </a>
-              </div>
             </div>
-            <div class="col-lg-8 col-sm-12">
-              <div class="project-wrapper__image load-hidden">
-                <a rel="noreferrer" href="#!" target="_blank">
-                  <div
-                    data-tilt
-                    data-tilt-max="4"
-                    data-tilt-glare="true"
-                    data-tilt-max-glare="0.5"
-                    class="thumbnail rounded js-tilt"
-                  >
-                    <img
-                      alt="Project Image"
-                      class="img-fluid"
-                      src="assets/project1.png"
-                    />
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-          <!-- /END Project -->
-
-          <!-- Notice: each .row is a project -->
-          <div class="row">
-            <div class="col-lg-4 col-sm-12">
-              <div class="project-wrapper__text load-hidden">
-                <h3 class="project-wrapper__text-title">Background Generator</h3>
-                <div>
-                  <p class="mb-4">
-                    • An application created using HTML,CSS and Javascript.<br>
-                    • Generates beautiful gradient backgrounds based on the Color input given by the user.<br>
-                    • After the gradient is generated it returns a Color code which can be used by other developers for their websites background.<br>
-                    • Deployed using Github viaGithub Pages.<br>
-                  </p>
-                </div>
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  class="cta-btn cta-btn--hero"
-                  href="https://madhesh19.github.io/Background-generator/"
-                >
-                  See Live
-                </a>
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  class="cta-btn text-color-main"
-                  href="https://github.com/madhesh19/Background-generator"
-                >
-                  Source Code
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-8 col-sm-12">
-              <div class="project-wrapper__image load-hidden">
-                <a rel="noreferrer" href="#!" target="_blank">
-                  <div
-                    data-tilt
-                    data-tilt-max="4"
-                    data-tilt-glare="true"
-                    data-tilt-max-glare="0.5"
-                    class="thumbnail rounded js-tilt"
-                  >
-                    <img
-                      alt="Project Image"
-                      class="img-fluid"
-                      src="assets/project2.png"
-                    />
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-          <!-- /END Project -->
-
-          <!-- Notice: each .row is a project -->
-          <div class="row">
-            <div class="col-lg-4 col-sm-12">
-              <div class="project-wrapper__text load-hidden">
-                <h3 class="project-wrapper__text-title">Tip Calculator</h3>
-                <div>
-                  <p class="mb-4">
-                    • An Simple calculator application created using HTML,CSS and Javascript.<br>
-                    • Deployed using Github viaGithub Pages.<br>
-                  </p>
-                </div>
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  class="cta-btn cta-btn--hero"
-                  href="https://madhesh19.github.io/tipcalculator/"
-                >
-                  See Live
-                </a>
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  class="cta-btn text-color-main"
-                  href="https://github.com/madhesh19/tipcalculator"
-                >
-                  Source Code
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-8 col-sm-12">
-              <div class="project-wrapper__image load-hidden">
-                <a rel="noreferrer" href="#!" target="_blank">
-                  <div
-                    data-tilt
-                    data-tilt-max="4"
-                    data-tilt-glare="true"
-                    data-tilt-max-glare="0.5"
-                    class="thumbnail rounded js-tilt"
-                  >
-                    <img
-                      alt="Project Image"
-                      class="img-fluid"
-                      src="assets/project3.png"
-                    />
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-          <!-- /END Project -->
         </div>
-      </div>
     </section>
-    <!-- /END Projects Section -->
 
-    <!-- **** Contact Section **** -->
-    <section id="contact">
-      <div class="container">
-        <h2 class="section-title">Contact</h2>
-        <div class="contact-wrapper load-hidden">
-          <p class="contact-wrapper__text">Click here to send me a mail</p>
-          <a
-            rel="noreferrer"
-            target="_blank"
-            class="cta-btn cta-btn--resume"
-            href="mailto:madhesh14702@gmail.com"
-            >Call to Action</a
-          >
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Alex Johnson. Built with passion and lots of coffee ☕</p>
         </div>
-      </div>
-    </section>
-    <!-- /END Contact Section -->
-
-    <!-- **** Footer Section **** -->
-    <footer class="footer navbar-static-bottom">
-      <div class="container">
-        <a rel="noreferrer" href="#top" class="back-to-top">
-          <i class="fa fa-angle-up fa-2x" aria-hidden="true"></i>
-        </a>
-        <div class="social-links">
-          <a rel="noreferrer" href="https://www.linkedin.com/in/madhesh-anand-5a3147239/" target="_blank">
-            <i class="fa fa-linkedin fa-inverse"></i>
-          </a>
-          <a rel="noreferrer" href="https://github.com/madhesh19" target="_blank">
-            <i class="fa fa-github fa-inverse"></i>
-          </a>
-        </div>
-
-        <hr />
-
-        <!-- Notice: if you want to give me some credit, it will be huge for me! if not, put your data on it -->
-        <p class="footer__text">
-          © 2023 - Website developed by
-          <a rel="noreferrer" href="https://github.com/madhesh19" target="_blank"
-            >Madhesh</a
-          >
-        </p>
-
-        <!-- TO DO: remove this entire paragraph once you finish your portfolio -->
-        
-      </div>
     </footer>
-    <!-- /END Footer Section -->
 
-    <script defer type="module" src="index.js"></script>
-  </body>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add active class to navigation based on scroll position
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
 </html>
