@@ -12,16 +12,16 @@
         }
 
         :root {
-            --primary-red: #dc2626;        /* Bright red */
-            --secondary-red: #b91c1c;      /* Darker red */
-            --accent-red: #ef4444;         /* Light red for highlights */
-            --dark-bg: #0a0a0a;           /* Pure black background */
-            --card-bg: #1a1a1a;           /* Dark grey for cards */
-            --surface: #262626;            /* Medium grey for surfaces */
-            --text-primary: #ffffff;       /* Pure white text */
-            --text-secondary: #d1d5db;     /* Light grey text */
-            --text-muted: #9ca3af;         /* Muted grey text */
-            --border: #374151;             /* Grey borders */
+            --primary-red: #dc2626;
+            --secondary-red: #b91c1c;
+            --accent-red: #ef4444;
+            --dark-bg: #0a0a0a;
+            --card-bg: #1a1a1a;
+            --surface: #262626;
+            --text-primary: #ffffff;
+            --text-secondary: #d1d5db;
+            --text-muted: #9ca3af;
+            --border: #374151;
             --gradient-red: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
             --gradient-grey: linear-gradient(135deg, #374151 0%, #1f2937 100%);
         }
@@ -97,8 +97,7 @@
             transition: width 0.3s ease;
         }
 
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
+        .nav-links a:hover::after {
             width: 100%;
         }
 
@@ -213,10 +212,6 @@
             align-items: center;
         }
 
-        .profile-container {
-            position: relative;
-        }
-
         .profile-image {
             width: 320px;
             height: 320px;
@@ -307,10 +302,6 @@
             align-items: center;
         }
 
-        .about-image-section {
-            text-align: center;
-        }
-
         .about-profile-image {
             width: 280px;
             height: 280px;
@@ -321,7 +312,7 @@
             justify-content: center;
             font-size: 4rem;
             color: var(--text-primary);
-            margin-bottom: 2rem;
+            margin: 0 auto;
             transition: transform 0.3s ease;
             border: 2px solid var(--border);
         }
@@ -389,7 +380,6 @@
             border: 1px solid var(--border);
             transition: all 0.3s ease;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            position: relative;
         }
 
         .project-card:hover {
@@ -406,18 +396,6 @@
             justify-content: center;
             font-size: 4rem;
             color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-image::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent 0%, rgba(0,0,0,0.1) 100%);
         }
 
         .project-content {
@@ -469,17 +447,11 @@
 
         .project-link:hover {
             color: var(--accent-red);
-            text-shadow: 0 0 10px rgba(220, 38, 38, 0.3);
         }
 
         /* Education Section */
         .education {
             background: var(--card-bg);
-        }
-
-        .education-timeline {
-            max-width: 800px;
-            margin: 0 auto;
         }
 
         .education-item {
@@ -489,7 +461,10 @@
             border: 1px solid var(--border);
             margin-bottom: 2rem;
             transition: all 0.3s ease;
-            position: relative;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 2rem;
         }
 
         .education-item:hover {
@@ -526,26 +501,10 @@
             border-radius: 15px;
         }
 
-        .education-details {
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-
-        .gpa-info {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border);
-        }
-
         /* Contact Section */
         .contact {
             background: var(--dark-bg);
             text-align: center;
-        }
-
-        .contact-content {
-            max-width: 700px;
-            margin: 0 auto;
         }
 
         .contact-description {
@@ -553,6 +512,9 @@
             color: var(--text-secondary);
             margin-bottom: 3rem;
             line-height: 1.8;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .contact-grid {
@@ -611,7 +573,24 @@
 
         .footer p {
             color: var(--text-muted);
-            font-size: 0.95rem;
+        }
+
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--surface);
+            z-index: 9999;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--gradient-red);
+            width: 0%;
+            transition: width 0.3s ease;
         }
 
         /* Animations */
@@ -626,7 +605,7 @@
             transform: translateY(0);
         }
 
-        /* Responsive Design */
+        /* Mobile Responsive */
         @media (max-width: 1024px) {
             .hero-content {
                 grid-template-columns: 1fr;
@@ -669,38 +648,16 @@
                 gap: 1rem;
             }
 
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
             .section-title {
                 font-size: 2.2rem;
             }
         }
-
-        /* Scroll indicator */
-        .scroll-indicator {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--surface);
-            z-index: 9999;
-        }
-
-        .scroll-progress {
-            height: 100%;
-            background: var(--gradient-red);
-            width: 0%;
-            transition: width 0.3s ease;
-        }
     </style>
 </head>
 <body>
-    <!-- Scroll Progress Indicator -->
-    <div class="scroll-indicator">
-        <div class="scroll-progress" id="scrollProgress"></div>
+    <!-- Scroll Progress -->
+    <div class="scroll-progress">
+        <div class="progress-bar" id="progressBar"></div>
     </div>
 
     <!-- Header -->
@@ -731,9 +688,7 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <div class="profile-container">
-                        <div class="profile-image">👨‍💻</div>
-                    </div>
+                    <div class="profile-image">👨‍💻</div>
                 </div>
             </div>
         </div>
@@ -746,7 +701,7 @@
             <p class="section-subtitle fade-in">Passionate developer with a love for creating innovative digital solutions</p>
             
             <div class="about-content">
-                <div class="about-image-section fade-in">
+                <div class="fade-in">
                     <div class="about-profile-image">🎯</div>
                 </div>
                 
@@ -850,39 +805,35 @@
             <h2 class="section-title fade-in">Education & Qualifications</h2>
             <p class="section-subtitle fade-in">Academic background and professional certifications</p>
             
-            <div class="education-timeline">
-                <div class="education-item fade-in">
-                    <div class="education-header">
-                        <div>
-                            <div class="degree">Bachelor of Science in Computer Science</div>
-                            <div class="school">Massachusetts Institute of Technology</div>
-                        </div>
-                        <div class="year">2020 - 2024</div>
+            <div class="education-item fade-in">
+                <div class="education-header">
+                    <div>
+                        <div class="degree">Bachelor of Science in Computer Science</div>
+                        <div class="school">Massachusetts Institute of Technology</div>
                     </div>
-                    <div class="education-details">
-                        <p><strong>Relevant Coursework:</strong> Advanced Algorithms, Software Engineering, Database Systems, Machine Learning, Computer Networks, Web Development</p>
-                        <div class="gpa-info">
-                            <p><strong>GPA:</strong> 3.9/4.0 | <strong>Magna Cum Laude</strong> | <strong>Dean's List:</strong> All Semesters</p>
-                        </div>
-                    </div>
+                    <div class="year">2020 - 2024</div>
                 </div>
+                <div style="color: var(--text-secondary); line-height: 1.8;">
+                    <p><strong>Relevant Coursework:</strong> Advanced Algorithms, Software Engineering, Database Systems, Machine Learning, Computer Networks, Web Development</p>
+                    <p style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);"><strong>GPA:</strong> 3.9/4.0 | <strong>Magna Cum Laude</strong> | <strong>Dean's List:</strong> All Semesters</p>
+                </div>
+            </div>
 
-                <div class="education-item fade-in">
-                    <div class="education-header">
-                        <div>
-                            <div class="degree">Professional Certifications</div>
-                            <div class="school">Various Institutions</div>
-                        </div>
-                        <div class="year">2024</div>
+            <div class="education-item fade-in">
+                <div class="education-header">
+                    <div>
+                        <div class="degree">Professional Certifications</div>
+                        <div class="school">Various Institutions</div>
                     </div>
-                    <div class="education-details">
-                        <ul style="color: var(--text-secondary); line-height: 1.8;">
-                            <li>AWS Certified Solutions Architect - Professional</li>
-                            <li>Google Cloud Professional Developer</li>
-                            <li>Microsoft Azure Developer Associate</li>
-                            <li>MongoDB Certified Developer</li>
-                        </ul>
-                    </div>
+                    <div class="year">2024</div>
+                </div>
+                <div style="color: var(--text-secondary); line-height: 1.8;">
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li style="margin-bottom: 0.5rem;">• AWS Certified Solutions Architect - Professional</li>
+                        <li style="margin-bottom: 0.5rem;">• Google Cloud Professional Developer</li>
+                        <li style="margin-bottom: 0.5rem;">• Microsoft Azure Developer Associate</li>
+                        <li style="margin-bottom: 0.5rem;">• MongoDB Certified Developer</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -892,22 +843,116 @@
     <section id="contact" class="section contact">
         <div class="container">
             <h2 class="section-title fade-in">Let's Work Together</h2>
-            <div class="contact-content">
-                <p class="contact-description fade-in">Ready to bring your ideas to life? I'm always excited to collaborate on innovative projects and discuss new opportunities.</p>
-                
-                <div class="contact-grid">
-                    <div class="contact-item fade-in">
-                        <span class="contact-icon">📧</span>
-                        <h4>Email</h4>
-                        <a href="mailto:alex.johnson@email.com">alex.johnson@email.com</a>
-                    </div>
-                    <div class="contact-item fade-in">
-                        <span class="contact-icon">💼</span>
-                        <h4>LinkedIn</h4>
-                        <a href="https://linkedin.com/in/alexjohnson" target="_blank">linkedin.com/in/alexjohnson</a>
-                    </div>
-                    <div class="contact-item fade-in">
-                        <span class="contact-icon">🐱</span>
-                        <h4>GitHub</h4>
-                        <a href="https://github.com/alexjohnson" target="_blank">github.com/alexjohnson</a>
-                    </div>
+            <p class="contact-description fade-in">Ready to bring your ideas to life? I'm always excited to collaborate on innovative projects and discuss new opportunities.</p>
+            
+            <div class="contact-grid">
+                <div class="contact-item fade-in">
+                    <span class="contact-icon">📧</span>
+                    <h4>Email</h4>
+                    <a href="mailto:alex.johnson@email.com">alex.johnson@email.com</a>
+                </div>
+                <div class="contact-item fade-in">
+                    <span class="contact-icon">💼</span>
+                    <h4>LinkedIn</h4>
+                    <a href="https://linkedin.com/in/alexjohnson" target="_blank">linkedin.com/in/alexjohnson</a>
+                </div>
+                <div class="contact-item fade-in">
+                    <span class="contact-icon">🐱</span>
+                    <h4>GitHub</h4>
+                    <a href="https://github.com/alexjohnson" target="_blank">github.com/alexjohnson</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Alex Johnson. Built with passion and lots of coffee ☕</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll progress bar
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercent = (scrollTop / scrollHeight) * 100;
+            document.getElementById('progressBar').style.width = scrollPercent + '%';
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Active navigation link highlighting
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Add some interactive effects
+        document.querySelectorAll('.skill-tag').forEach(tag => {
+            tag.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) scale(1.05)';
+            });
+            tag.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero::before');
+            if (parallax) {
+                const speed = scrolled * 0.5;
+                // Apply subtle parallax effect
+            }
+        });
+    </script>
+</body>
+</html>
