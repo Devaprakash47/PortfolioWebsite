@@ -87,7 +87,7 @@
             padding: 0.5rem 0;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: var(--primary-red);
         }
 
@@ -102,7 +102,7 @@
             transition: width 0.3s ease;
         }
 
-        .nav-links a:hover::after {
+        .nav-links a:hover::after, .nav-links a.active::after {
             width: 100%;
         }
 
@@ -351,7 +351,6 @@
             width: 320px;
             height: 320px;
             border-radius: 50%;
-            background: var(--gradient-red);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -364,6 +363,18 @@
             animation: fadeIn 1s ease 0.8s forwards;
             position: relative;
             overflow: hidden;
+            background: var(--gradient-red);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .profile-image.no-image {
+            background: var(--gradient-red);
         }
 
         .profile-image:hover {
@@ -461,7 +472,6 @@
             width: 280px;
             height: 280px;
             border-radius: 20px;
-            background: var(--gradient-grey);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -472,6 +482,18 @@
             border: 2px solid var(--border);
             position: relative;
             overflow: hidden;
+            background: var(--gradient-grey);
+        }
+
+        .about-profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 18px;
+        }
+
+        .about-profile-image.no-image {
+            background: var(--gradient-grey);
         }
 
         .about-profile-image:hover {
@@ -1115,6 +1137,29 @@
             transform: translateY(0);
         }
 
+        /* Photo Upload Area */
+        .photo-placeholder {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 6rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .photo-placeholder-about {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            pointer-events: none;
+        }
+
         /* Mobile Responsive */
         @media (max-width: 1024px) {
             .hero-content {
@@ -1203,6 +1248,9 @@
             .profile-image {
                 width: 250px;
                 height: 250px;
+            }
+
+            .profile-image .photo-placeholder {
                 font-size: 4rem;
             }
 
@@ -1244,6 +1292,9 @@
             .profile-image {
                 width: 200px;
                 height: 200px;
+            }
+
+            .profile-image .photo-placeholder {
                 font-size: 3rem;
             }
 
@@ -1294,15 +1345,15 @@
                     
                     <div class="hero-stats">
                         <div class="stat-item">
-                            <span class="stat-number">500+</span>
+                            <span class="stat-number">500</span>
                             <span class="stat-label">DSA Problems</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-number">15+</span>
+                            <span class="stat-number">15</span>
                             <span class="stat-label">Projects</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-number">3+</span>
+                            <span class="stat-number">3</span>
                             <span class="stat-label">Years Coding</span>
                         </div>
                     </div>
@@ -1314,7 +1365,11 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <div class="profile-image">👨‍💻</div>
+                    <div class="profile-image no-image" id="heroProfileImage">
+                        <!-- Replace 'your-photo.jpg' with your actual photo file name -->
+                        <!-- <img src="your-photo.jpg" alt="Devaprakash Profile Photo" onerror="this.style.display='none';"> -->
+                        <div class="photo-placeholder">👨‍💻</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1328,7 +1383,11 @@
             
             <div class="about-content">
                 <div class="fade-in">
-                    <div class="about-profile-image">🎯</div>
+                    <div class="about-profile-image no-image" id="aboutProfileImage">
+                        <!-- Replace 'your-photo.jpg' with your actual photo file name -->
+                        <!-- <img src="your-photo.jpg" alt="Devaprakash About Photo" onerror="this.style.display='none';"> -->
+                        <div class="photo-placeholder-about">🎯</div>
+                    </div>
                 </div>
                 
                 <div class="about-text fade-in">
@@ -1786,6 +1845,32 @@
             });
         });
 
+        // Function to handle profile image loading
+        function handleImageLoad() {
+            // Hero section profile image
+            const heroImg = document.querySelector('#heroProfileImage img');
+            const heroPlaceholder = document.querySelector('#heroProfileImage .photo-placeholder');
+            const heroContainer = document.getElementById('heroProfileImage');
+            
+            if (heroImg && heroImg.complete && heroImg.naturalHeight !== 0) {
+                heroPlaceholder.style.display = 'none';
+                heroContainer.classList.remove('no-image');
+            }
+
+            // About section profile image
+            const aboutImg = document.querySelector('#aboutProfileImage img');
+            const aboutPlaceholder = document.querySelector('#aboutProfileImage .photo-placeholder-about');
+            const aboutContainer = document.getElementById('aboutProfileImage');
+            
+            if (aboutImg && aboutImg.complete && aboutImg.naturalHeight !== 0) {
+                aboutPlaceholder.style.display = 'none';
+                aboutContainer.classList.remove('no-image');
+            }
+        }
+
+        // Check for images when page loads
+        window.addEventListener('load', handleImageLoad);
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1923,20 +2008,6 @@
             });
         });
 
-        // Typing effect for hero title
-        function typeWriter(element, text, delay = 100) {
-            let i = 0;
-            element.innerHTML = '';
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, delay);
-                }
-            }
-            type();
-        }
-
         // Counter animation for stats
         function animateCounter(element, target, duration = 2000) {
             let start = 0;
@@ -1945,10 +2016,10 @@
             function updateCounter() {
                 start += increment;
                 if (start < target) {
-                    element.textContent = Math.floor(start) + '+';
+                    element.textContent = Math.floor(start);
                     requestAnimationFrame(updateCounter);
                 } else {
-                    element.textContent = target + '+';
+                    element.textContent = target;
                 }
             }
             updateCounter();
@@ -2091,18 +2162,23 @@
             }, 3000);
         }
 
-        // Initialize AOS (Animate On Scroll) library if you want to add it later
-        // You can uncomment this and add AOS library for more animations
-        /*
-        if (typeof AOS !== 'undefined') {
-            AOS.init({
-                duration: 800,
-                easing: 'ease-in-out',
-                once: true,
-                mirror: false
-            });
-        }
-        */
+        // Console message for recruiters
+        console.log(`
+        🚀 Hi there! I'm Devaprakash, a passionate Software Development Engineer.
+        
+        📊 Quick Stats:
+        • 500+ DSA problems solved
+        • 15+ projects built
+        • 3+ years of coding experience
+        • Looking for SDE/SDE Intern opportunities
+        
+        💼 Let's connect:
+        • Email: devaprakash.dev@gmail.com
+        • LinkedIn: linkedin.com/in/devaprakash-sde
+        • GitHub: github.com/devaprakash-sde
+        
+        Thanks for checking out my portfolio! 🎯
+        `);
 
         console.log('🚀 Portfolio loaded successfully! Looking for SDE opportunities.');
     </script>
